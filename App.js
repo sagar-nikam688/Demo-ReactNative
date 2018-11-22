@@ -10,6 +10,8 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import TakeTextInput from './src/component/TextInput'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import LinearGradient from 'react-native-linear-gradient';
+
 
 
 type Props = {};
@@ -27,10 +29,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <KeyboardAwareScrollView style={styles.container} behavior="padding" enabled >
-        <Image
-          style={styles.imageStyle}
-          source={require('./src/Screen.png')}
-        />
+        {this._renderImage()}
         <Text style={styles.textStyle}>Sign in</Text>
         {/* <TakeTextInput title="EMAIL" placeHolder="type here..." isSecure={false} returnKeyType="next" ref="email" onFocusblur={() => { this.secondTextInput.focus() }}/> */}
 
@@ -89,6 +88,14 @@ export default class App extends Component<Props> {
         </View>
       </KeyboardAwareScrollView>
     );
+  }
+  _renderImage(){
+    return (
+      <Image
+        style={styles.imageStyle}
+        source={require('./src/Screen.png')}
+      />
+    )
   }
   _gmailCall = () => {
     alert('Login Gmail!')

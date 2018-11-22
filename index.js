@@ -5,4 +5,4 @@ import App from './App';
 import SignUp from './SignUp'
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => SignUp);
+AppRegistry.registerComponent(appName, () => App);
