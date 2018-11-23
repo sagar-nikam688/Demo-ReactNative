@@ -22,67 +22,29 @@ export default class Login extends Component {
   }
 
   render() {
-    const { width, height } = Dimensions.get('window');    
+    const { width, height } = Dimensions.get('window');
     return (
-      <KeyboardAwareScrollView 
-      contentContainerStyle = {{height : height}}
-      style={[styles.container]} behavior="padding" enabled >
+      <KeyboardAwareScrollView
+        contentContainerStyle={{ height: height }}
+        style={[styles.container]}
+        behavior="padding" enabled >
         <View style={{ flex: .5 }}>
           {this._renderImage()}
           <Text style={styles.textStyle}>Sign in</Text>
         </View>
-        {/* <TakeTextInput title="EMAIL" placeHolder="type here..." isSecure={false} returnKeyType="next" ref="email" onFocusblur={() => { this.secondTextInput.focus() }}/> */}
-        <View style={{ flex: .4,  }}>
-          <Text style={styles.placeHolderStyle}>EMAIL</Text>
-          <View style={styles.textInputContainerStyle}>
-            <Image
-              style={styles.imageIconStyle}
-              source={require('../at.png')}
-            />
-            <TextInput
-              ref="email"
-              style={styles.textInputStyle}
-              placeholder="abc@example.com"
-              returnKeyType="next"
-              onChangeText={(emailText) => this.setState({ emailText: true, email: emailText })}
-
-              onSubmitEditing={() => { this.secondTextInput.focus() }}
-            />
-          </View>
-          {/* <TakeTextInput title="PASSWORD" placeHolder="type here..." isSecure={true} returnKeyType="done" ref={(input) => { this.secondTextInput = input; }}/> */}
-
-          <Text style={styles.placeHolderStyle}>PASSWORD</Text>
-          <View style={styles.textInputContainerStyle}>
-            <Image
-              style={styles.imageIconStyle}
-              source={require('../lock.png')}
-            />
-            <TextInput
-              ref={(input) => { this.secondTextInput = input; }}
-              secureTextEntry={true}
-              style={styles.textInputStyle}
-              placeholder="*********"
-              returnKeyType="done"
-              onChangeText={(pwdText) => this.setState({ pwdText: true, pwd: pwdText })}
-            />
-          </View>
-          <TouchableOpacity style={styles.buttonStyle} onPress={this._validateSignIn} disabled={(this.state.emailText && this.state.pwdText ? false : true)}>
-            <Text style={[styles.textStyle2,{padding :10}]}>Sign in</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ flex: .2,flexDirection: 'row', justifyContent : 'center', alignItems:'center',marginTop:60}}>
+        {this._renderLoginForm()}
+        <View style={{ flex: .2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 60 }}>
           <View style={[styles.socialContainerStyle,]}>
             <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#f4492f', justifyContent: 'center', width: "100%", flex: .5, marginRight: 15 }}>
-              <Text style={{ textAlign: 'center', color: 'white', fontFamily: "Poppins-Light",padding :10 }} onPress={this._gmailCall}>Gmail</Text>
+              <Text style={{ textAlign: 'center', color: 'white', fontFamily: "Poppins-Light", padding: 10 }} onPress={this._gmailCall}>Gmail</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#173769', justifyContent: 'center', width: "100%", flex: .5, marginLeft: 15, }}>
-              <Text style={{ color: 'white', textAlign: 'center', fontFamily: "Poppins-Light" ,padding :10}} >Facebook</Text>
+              <Text style={{ color: 'white', textAlign: 'center', fontFamily: "Poppins-Light", padding: 10 }} >Facebook</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        <View style={{ flex: .5, flexDirection :'column' , justifyContent :'flex-start', alignItems: 'center'}}>
+        <View style={{ flex: .5, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
           <TouchableOpacity style={{ marginTop: 30, justifyContent: 'center', alignItems: 'center', height: 22, }}>
             <Text style={{ fontSize: 17, color: '#D6772C', fontWeight: 'bold', fontFamily: "Poppins-Light" }}>Forgot Password?</Text>
           </TouchableOpacity>
@@ -105,6 +67,49 @@ export default class Login extends Component {
       />
     )
   }
+
+  _renderLoginForm() {
+    return (
+      <View style={{ flex: .4, }}>
+        <Text style={styles.placeHolderStyle}>EMAIL</Text>
+        <View style={styles.textInputContainerStyle}>
+          <Image
+            style={styles.imageIconStyle}
+            source={require('../at.png')}
+          />
+          <TextInput
+            ref="email"
+            style={styles.textInputStyle}
+            placeholder="abc@example.com"
+            returnKeyType="next"
+            onChangeText={(emailText) => this.setState({ emailText: true, email: emailText })}
+
+            onSubmitEditing={() => { this.secondTextInput.focus() }}
+          />
+        </View>
+        {/* <TakeTextInput title="PASSWORD" placeHolder="type here..." isSecure={true} returnKeyType="done" ref={(input) => { this.secondTextInput = input; }}/> */}
+
+        <Text style={styles.placeHolderStyle}>PASSWORD</Text>
+        <View style={styles.textInputContainerStyle}>
+          <Image
+            style={styles.imageIconStyle}
+            source={require('../lock.png')}
+          />
+          <TextInput
+            ref={(input) => { this.secondTextInput = input; }}
+            secureTextEntry={true}
+            style={styles.textInputStyle}
+            placeholder="*********"
+            returnKeyType="done"
+            onChangeText={(pwdText) => this.setState({ pwdText: true, pwd: pwdText })}
+          />
+        </View>
+        <TouchableOpacity style={styles.buttonStyle} onPress={this._validateSignIn} disabled={(this.state.emailText && this.state.pwdText ? false : true)}>
+          <Text style={[styles.textStyle2, { padding: 10 }]}>Sign in</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
   _gmailCall = () => {
     alert('Login Gmail!')
   }
@@ -124,7 +129,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
+
   },
   textStyle: {
     marginLeft: 40,
@@ -176,16 +181,13 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginLeft: 40,
     marginRight: 40,
-    marginBottom :15,
+    marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    // textAlign: 'center',
-    // height: 40,
   },
   textStyle2: {
     fontSize: 17,
     color: 'white',
-    // backgroundColor: 'green',
     fontFamily: "Poppins-Thin",
     fontWeight: 'bold'
   },
@@ -195,8 +197,6 @@ const styles = StyleSheet.create({
     marginRight: 40,
     flexDirection: 'row',
     marginTop: 20,
-    // height : 45,
-    // backgroundColor:'red',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
