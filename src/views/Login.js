@@ -7,10 +7,10 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, AlertIOS } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
-export default class Login extends Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,23 +22,26 @@ export default class Login extends Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     const { width, height } = Dimensions.get('window');
     return (
       <KeyboardAwareScrollView
         contentContainerStyle={{ height: height }}
         style={[styles.container]}
         behavior="padding" enabled >
-        <View style={{ flex: .5 }}>
+        <View style={{ flex: .6, }}>
           {this._renderImage()}
           <Text style={styles.textStyle}>Sign in</Text>
         </View>
         {this._renderLoginForm()}
         <View style={{ flex: .2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 60 }}>
           <View style={[styles.socialContainerStyle,]}>
-            <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#f4492f', justifyContent: 'center', width: "100%", flex: .5, marginRight: 15 }}>
-              <Text style={{ textAlign: 'center', color: 'white', fontFamily: "Poppins-Light", padding: 10 }} onPress={this._gmailCall}>Gmail</Text>
+            <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#f4492f', justifyContent: 'center', width: "100%", flex: .5, marginRight: 15 }}
+              onPress={this._gmailCall}>
+              <Text style={{ textAlign: 'center', color: 'white', fontFamily: "Poppins-Light", padding: 10 }} >Gmail</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#173769', justifyContent: 'center', width: "100%", flex: .5, marginLeft: 15, }}>
+            <TouchableOpacity style={{ borderRadius: 50, backgroundColor: '#173769', justifyContent: 'center', width: "100%", flex: .5, marginLeft: 15, }}
+              onPress={this._facebookCall}>
               <Text style={{ color: 'white', textAlign: 'center', fontFamily: "Poppins-Light", padding: 10 }} >Facebook</Text>
             </TouchableOpacity>
           </View>
@@ -50,8 +53,9 @@ export default class Login extends Component {
           </TouchableOpacity>
           <View style={[styles.forgotPasswordStyle,]}>
             <Text style={{ fontSize: 17, color: 'darkgray', alignItems: 'center', fontFamily: "Poppins-Light", }}>Don't have account? </Text>
-            <TouchableOpacity>
-              <Text style={{ fontSize: 17, color: 'darkgray', }}>Sign up now</Text>
+            <TouchableOpacity
+              onPress={() => navigate('SignUp')}>
+              <Text style={{ fontSize: 17, color: 'darkgray', }} >Sign up now</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -111,7 +115,17 @@ export default class Login extends Component {
     )
   }
   _gmailCall = () => {
-    alert('Login Gmail!')
+    AlertIOS.alert(
+      'Sync Complete',
+      'All your data are belong to us.'
+    );
+  }
+  _facebookCall = () => {
+    AlertIOS.prompt(
+      'Enter a UserId',
+      null,
+      text => alert('You entered ' + text)
+    );
   }
   _validateSignIn = () => {
     let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -144,7 +158,6 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 20,
     flex: 2,
-    //borderWidth : 1,
     marginLeft: 'auto',
     marginRight: 'auto',
     resizeMode: 'contain',
