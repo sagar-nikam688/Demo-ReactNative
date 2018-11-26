@@ -54,7 +54,7 @@ export default class Login extends React.Component {
           <View style={[styles.forgotPasswordStyle,]}>
             <Text style={{ fontSize: 17, color: 'darkgray', alignItems: 'center', fontFamily: "Poppins-Light", }}>Don't have account? </Text>
             <TouchableOpacity
-              onPress={() => navigate('SignUp')}>
+              onPress={() => navigate('HomeScreen')}>
               <Text style={{ fontSize: 17, color: 'darkgray', }} >Sign up now</Text>
             </TouchableOpacity>
           </View>
