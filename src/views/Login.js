@@ -53,8 +53,7 @@ export default class Login extends React.Component {
           </TouchableOpacity>
           <View style={[styles.forgotPasswordStyle,]}>
             <Text style={{ fontSize: 17, color: 'darkgray', alignItems: 'center', fontFamily: "Poppins-Light", }}>Don't have account? </Text>
-            <TouchableOpacity
-              onPress={() => navigate('HomeScreen')}>
+            <TouchableOpacity>
               <Text style={{ fontSize: 17, color: 'darkgray', }} >Sign up now</Text>
             </TouchableOpacity>
           </View>
@@ -132,10 +131,11 @@ export default class Login extends React.Component {
     let regPwd = /^[a-zA-Z]$/;
     if (regEmail.test(this.state.email) === false) {
       alert('Please Enter valid Email')
-    } else if (regPwd.test(this.state.pwd) === false || this.state.pwd.length <= 8) {
+    } else if (this.state.pwd.length <= 8) {
       alert("Password should contain atleast one number , one special character also it should have minimum 8 characters");
     } else {
-      alert('Login Sucessfull!')
+      const { navigate } = this.props.navigation;
+      navigate('HomeScreen')
     }
   }
 }
