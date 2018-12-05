@@ -14,8 +14,8 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      emailText: "",
-      pwdText: "",
+      emailText: "abc@example.com",
+      pwdText: "123456789",
       email: "",
       pwd: "",
     };
@@ -86,7 +86,7 @@ export default class Login extends React.Component {
             placeholder="abc@example.com"
             returnKeyType="next"
             onChangeText={(emailText) => this.setState({ emailText: true, email: emailText })}
-
+            value =  "abc@example.com"
             onSubmitEditing={() => { this.secondTextInput.focus() }}
           />
         </View>
@@ -127,16 +127,16 @@ export default class Login extends React.Component {
     );
   }
   _validateSignIn = () => {
-    let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    let regPwd = /^[a-zA-Z]$/;
-    if (regEmail.test(this.state.email) === false) {
-      alert('Please Enter valid Email')
-    } else if (this.state.pwd.length <= 8) {
-      alert("Password should contain atleast one number , one special character also it should have minimum 8 characters");
-    } else {
+    // let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    // let regPwd = /^[a-zA-Z]$/;
+    // if (regEmail.test(this.state.email) === false) {
+    //   alert('Please Enter valid Email')
+    // } else if (this.state.pwd.length <= 8) {
+    //   alert("Password should contain atleast one number , one special character also it should have minimum 8 characters");
+    // } else {
       const { navigate } = this.props.navigation;
       navigate('HomeScreen')
-    }
+    // }
   }
 }
 
