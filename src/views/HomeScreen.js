@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, ScrollView, ActivityIndicator, FlatList, } from 'react-native';
 import YoutubeListItem from '../component/YotubeListItem'
-import { Container, Header, Title, Body, Right, Icon, Button, Item, Input } from 'native-base';
+import { Container, Header, Title, Body, Right, Icon, Button, Item, Input, Left } from 'native-base';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default class Homescreen extends Component {
@@ -10,14 +10,13 @@ export default class Homescreen extends Component {
         header: null
 
     };
-
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
             albums: [],
             isSearchBarActive: false,
-            filterAlbums : []
+            filterAlbums: []
         }
     }
 
@@ -26,7 +25,8 @@ export default class Homescreen extends Component {
         console.log(this.state.isSearchBarActive)
         this.setState({
             isSearchBarActive: !this.state.isSearchBarActive,
-            albums : this.state.isSearchBarActive  ? this.state.albums  : this.state.filterAlbums
+            albums: this.state.filterAlbums
+            //albums : this.state.isSearchBarActive  ? this.state.albums  : this.state.filterAlbums
         })
         debugger;
     };
@@ -44,35 +44,37 @@ export default class Homescreen extends Component {
                 //         <Text>Search</Text>
                 //     </Button>
                 // </Header>
-                <View>
+                <View style={{ flexDirection: 'row', }}>
                     <TextInput
                         placeholder="Search"
-                        style= {{height :30 ,margin : 10,borderColor : 'gray', borderRadius : 10, borderWidth :1, paddingLeft : 6}}
+                        style={{ height: 30, margin: 10, borderColor: 'gray', borderRadius: 10, borderWidth: 1, flex: 2, paddingLeft: 10 }}
                         onChangeText={(text) => { this.searchInList(text) }}
                     />
+                    <Icon name='close' onPress={this.displayAlert}
+                        style={{ alignSelf: 'center', padding: 5 }} />
                 </View>
             );
-        } 
+        }
     }
 
     searchInList = (text) => {
         console.log(text)
-        if(text != "") {
+        if (text != "") {
             var filtered = this.state.albums.filter(
-                (album)=> {
-                    if(album.title.includes(text)) {
+                (album) => {
+                    if (album.title.includes(text)) {
                         return album;
                     }
                 },
             );
             console.log(filtered)
             this.setState({
-                albums : filtered
-            })    
+                albums: filtered
+            })
         } else {
             this.setState({
-                albums : this.state.filterAlbums
-            })    
+                albums: this.state.filterAlbums
+            })
         }
     }
 
@@ -85,7 +87,7 @@ export default class Homescreen extends Component {
                 this.setState({
                     isLoading: false,
                     albums: responseJson,
-                    filterAlbums : responseJson
+                    filterAlbums: responseJson
                 }, function () {
 
                 });
@@ -107,6 +109,11 @@ export default class Homescreen extends Component {
         return (
             <Container>
                 <Header>
+                    <Left>
+                        <Button transparent >
+                            <Icon name='menu' />
+                        </Button>
+                    </Left>
                     <Body>
                         <Title>HomeScreen</Title>
                     </Body>
@@ -127,8 +134,6 @@ export default class Homescreen extends Component {
                     />
                 </View>
             </Container>
-
-
         );
     }
 
