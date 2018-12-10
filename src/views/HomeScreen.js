@@ -6,10 +6,11 @@ import { TextInput } from 'react-native-gesture-handler';
 
 export default class Homescreen extends Component {
     static navigationOptions = {
-        title: 'Welcome',
-        header: null
-
-    };
+        drawerIcon : ({tintColor}) => (
+            <Icon name = "home" style ={{fontSize : 23 ,color : tintColor}}/>
+        )       
+    }
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -21,14 +22,12 @@ export default class Homescreen extends Component {
     }
 
     displayAlert = () => {
-        debugger;
         console.log(this.state.isSearchBarActive)
         this.setState({
             isSearchBarActive: !this.state.isSearchBarActive,
             albums: this.state.filterAlbums
             //albums : this.state.isSearchBarActive  ? this.state.albums  : this.state.filterAlbums
         })
-        debugger;
     };
 
 
@@ -80,7 +79,6 @@ export default class Homescreen extends Component {
 
     componentDidMount() {
         console.log('callled')
-        debugger;
         return fetch('https://s3-us-west-2.amazonaws.com/youtubeassets/home_num_likes.json')
             .then((response) => response.json())
             .then((responseJson) => {
@@ -111,7 +109,7 @@ export default class Homescreen extends Component {
                 <Header>
                     <Left>
                         <Button transparent >
-                            <Icon name='menu' />
+                            <Icon name='menu' onPress={()=> this.props.navigation.openDrawer()} />
                         </Button>
                     </Left>
                     <Body>

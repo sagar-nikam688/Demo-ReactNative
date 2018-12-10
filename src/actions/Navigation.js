@@ -4,15 +4,14 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from '../views/HomeScreen'
 import Login from '../views/Login'
 import SignUp from '../views/SignUp'
+import DrawerReact from './Drawer'
 const Navigation = createStackNavigator({
-    Login: {
-        screen: Login,
-        navigationOptions: {
-            header: null
-        }
-    },
+    Login: { screen: Login },
     SignUp: { screen: SignUp },
-    HomeScreen : {screen : HomeScreen}
-});
+    DrawerReact: { screen: DrawerReact },
+    HomeScreen: { screen: HomeScreen }
+}, {
+        headerMode: "none",
+    });
 const AppContainer = createAppContainer(Navigation);
 export default AppContainer;
