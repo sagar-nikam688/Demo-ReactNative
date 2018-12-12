@@ -3,6 +3,10 @@ import { Platform, StyleSheet, View, ScrollView, Text, Image, SafeAreaView } fro
 import { createDrawerNavigator, createAppContainer ,DrawerItems} from 'react-navigation';
 import HomeScreen from '../views/HomeScreen'
 import PInterest from '../views/PInterest'
+import PInterestScroll from '../views/PInterestScroll'
+import BumpCard from '../views/parentCompenent'
+import ChartViewDemo from '../views/ChartView'
+import BarChart from '../component/BarChart'
 
 export default class DrawerReact extends React.Component {
     render() {
@@ -33,11 +37,14 @@ const CustomDrawerComponent = (props) => (
 const AppDrawer = createDrawerNavigator({
     HomeScreen: HomeScreen,
     PInterest : PInterest,
+    PInterestScroll : PInterestScroll,
+    BumpCard : BumpCard,
+    ChartViewDemo : ChartViewDemo,
+    BarChart : BarChart
 },{
     contentComponent: CustomDrawerComponent,
     contentOptions : {
         activeTintColor: 'white',
-        //activeBackgroundColor : 'pink'
     }
 })
 

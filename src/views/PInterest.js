@@ -14,9 +14,9 @@ export default class PInterest extends Component {
         }
     }
     static navigationOptions = {
-        drawerIcon : ({tintColor}) => (
-            <Icon type = "Entypo" name = "pinterest" style ={{fontSize : 23 ,color : tintColor}}/>
-        )       
+        drawerIcon: ({ tintColor }) => (
+            <Icon type="Entypo" name="pinterest" style={{ fontSize: 23, color: tintColor }} />
+        )
     }
     componentDidMount() {
         return fetch('https://demo6231795.mockable.io')
@@ -57,15 +57,18 @@ export default class PInterest extends Component {
                             <Button transparent >
                                 <Icon name='search' />
                             </Button>
+                            <Button transparent >
+                                <Icon type='FontAwesome' name='user-circle' />
+                            </Button>
                         </Right>
                     </Header>
                     <View style={[styles.container]}>
                         <FlatList
-                            style = {{backgroundColor: 'gray'}}
+                            style={{ backgroundColor: 'gray' }}
                             data={this.state.pItems}
-                            numColumns = {2}
-                            renderItem={pItemList => (
-                                <PInterestItem pItemList={pItemList.item} />
+                            numColumns={2}
+                            renderItem={(pItemList,index) => (
+                                <PInterestItem pItemList={pItemList.item} index = {pItemList.index} />
                             )}
                             keyExtractor={pitem => pitem.id}
                         />
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor : 'gray'
+        backgroundColor: 'gray'
     },
 
 })

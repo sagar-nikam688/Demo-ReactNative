@@ -3,11 +3,14 @@ import { Platform, StyleSheet, Text, View, Image, TouchableWithoutFeedback } fro
 export default class PInterestItem extends Component {
 
     componentDidMount() { }
+    displayAlert = () => {
+        let index = this.props.index;
+        alert(index)
+    }
     render() {
         let list_data = this.props.pItemList;
-        debugger;
         return (
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress = {() => this.displayAlert()}>
                 <View style={styles.mainContainer}>
                     <View style = {{borderBottomColor : 'gray', borderBottomWidth : 1}}>
                         <Image
@@ -56,13 +59,13 @@ const styles = StyleSheet.create({
 
     },
     text1: {
-        flex: 1.2,
+        //flex: 1.2,
         textAlign: "left",
         fontSize: 14,
         fontWeight: "500"
     },
     text2: {
-        flex: 1.2,
+        //flex: 1.2,
         textAlign: "left",
         fontSize: 14,
         marginTop:5,
