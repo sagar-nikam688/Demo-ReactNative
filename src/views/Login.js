@@ -135,7 +135,7 @@ export default class Login extends React.Component {
     //   alert("Password should contain atleast one number , one special character also it should have minimum 8 characters");
     // } else {
       const { navigate } = this.props.navigation;
-      navigate('DrawerReact')
+      navigate('AppDrawer')
     // }
   }
 }

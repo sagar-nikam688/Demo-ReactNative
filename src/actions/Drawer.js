@@ -7,6 +7,7 @@ import PInterestScroll from '../views/PInterestScroll'
 import BumpCard from '../views/parentCompenent'
 import ChartViewDemo from '../views/ChartView'
 import BarChart from '../component/BarChart'
+import GithubLogin from '../views/GithubLogin'
 
 export default class DrawerReact extends React.Component {
     render() {
@@ -40,13 +41,20 @@ const AppDrawer = createDrawerNavigator({
     PInterestScroll : PInterestScroll,
     BumpCard : BumpCard,
     ChartViewDemo : ChartViewDemo,
-    BarChart : BarChart
+    BarChart : BarChart,
+    GithubLogin : GithubLogin
 },{
     contentComponent: CustomDrawerComponent,
     contentOptions : {
         activeTintColor: 'white',
     }
-})
+},{
+    mode: "none",
+    headerMode: 'none',
+    navigationOptions: {
+      gesturesEnabled: false
+    }
+  })
 
 const AppContainer = createAppContainer(AppDrawer);
 

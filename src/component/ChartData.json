@@ -1,0 +1,48 @@
+{
+    "GetVisitsCountResult": {
+        "CallResult": {
+            "ErrorDescription": null,
+            "FIGUserSessionUid": null,
+            "FIGUserUid": null,
+            "PracticeUIdList": null,
+            "Status": "SUCCESS",
+            "TermsAndCondition": null
+        },
+        "Result": {
+            "Code": null,
+            "Description": null,
+            "StackTrace": null,
+            "Status": 0,
+            "Type": null
+        },
+        "ReturnValue": [
+            {
+                "data": [
+                    164,
+                    170,
+                    0
+                ],
+                "label": null,
+                "name": "Submitted"
+            },
+            {
+                "data": [
+                    228,
+                    83,
+                    0
+                ],
+                "label": null,
+                "name": "Not-Submitted"
+            },
+            {
+                "data": [
+                    0,
+                    0,
+                    228
+                ],
+                "label": null,
+                "name": "Awaiting Follow Up"
+            }
+        ]
+    }
+}
