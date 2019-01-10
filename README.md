@@ -1,17 +1,24 @@
 # Demo-ReactNative
 
-Design Demo of First React-Native App
+Demo First React-Native App covered below Points from React-native:
 
-Created Login Screen in React-Native
+1. Login Screen
 
-1.Login Screen
+2. React-Navigation 3.0.0
 
-![loginscreen](https://user-images.githubusercontent.com/45251228/49493541-883df980-f882-11e8-907d-9760709fe2af.png)
+3. YouTube List Clone
 
-2. YouTube List 
+4. Youtube List clone with search
+
+5. Pinterest Design Demo.
+
+6. Bar Chart implemented.
+
+7. GitHub API Integrated.
 
 
-![youtubelist](https://user-images.githubusercontent.com/45251228/49493542-88d69000-f882-11e8-9851-439c40d4e697.png)
+
+
 
 
 
