@@ -6,7 +6,7 @@ export default class GithubLogin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            emailText: "sagar-nikam688",
+            emailText: "",
             pwdText: "",
             isLoading:false,
             responseObject: {}
@@ -54,7 +54,6 @@ export default class GithubLogin extends React.Component {
                             placeholder="abc@example.com"
                             returnKeyType="next"
                             onChangeText={(emailText) => this.setState({ emailText: emailText })}
-                            value = "sagar-nikam688"
                             onSubmitEditing={() => { this.secondTextInput.focus() }}
                         />
                         <Text style={styles.placeHolderStyle}>Password</Text>

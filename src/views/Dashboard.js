@@ -128,6 +128,7 @@ export default class Dashboard extends React.Component {
                 </View>
                 <FollowersList
                     visible={this.state.showFollowerDialog}
+                    userId = {this.state.infoObject.login}
                     onDialogSend={this.onDialogSend}
                     onDialogCancel={this.onDialogCancel}
                 />

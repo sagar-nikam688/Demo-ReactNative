@@ -16,7 +16,9 @@ export default class FollowersList extends Component {
     }
 
     componentDidMount() {
-        let urlStr = "https://api.github.com/users/" + "suhasdpatil" + "/followers?client_id=ed4000cb58fbfd9ebd7e&client_secret=d8e477237c49da7857593e50904f0dd4f3ef0473"
+        const { userId } = this.props;
+
+        let urlStr = "https://api.github.com/users/" + userId + "/followers?client_id=ed4000cb58fbfd9ebd7e&client_secret=d8e477237c49da7857593e50904f0dd4f3ef0473"
         console.log(urlStr)
         return fetch(urlStr)
             .then((response) => response.json())
