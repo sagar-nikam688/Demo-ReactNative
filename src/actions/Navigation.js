@@ -32,9 +32,6 @@ const CustomDrawerComponent = (props) => (
 )
 
 const AppDrawer = createDrawerNavigator({
-  GithubLogin: {
-    screen: GithubLogin
-  },
   HomeScreen: {
     screen: HomeScreen
   },
@@ -49,6 +46,9 @@ const AppDrawer = createDrawerNavigator({
   },
   BarChart: {
     screen: BarChart
+  },
+  GithubLogin: {
+    screen: GithubLogin
   },
 },{
       contentComponent: CustomDrawerComponent,
