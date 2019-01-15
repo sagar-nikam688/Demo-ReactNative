@@ -1,4 +1,4 @@
-# Demo-ReactNative
+# React-Native First App
 
 Demo First React-Native App covered below Points from React-native:
 
